@@ -1,0 +1,24 @@
+services:
+  courier_crm_service:
+    container_name: courier_crm_service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8889:8889"
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    entrypoint: [ "/app/entrypoint.sh" ]
+    networks:
+      - backend
+
+volumes:
+  media_volume:
+  static_volume:
+
+
+networks:
+  backend:
+    external: true
