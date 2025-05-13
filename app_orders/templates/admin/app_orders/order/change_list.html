@@ -1,0 +1,17 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+{% if total_points %}
+<div class="results-summary" style="margin-bottom: 15px; padding: 10px; ">
+    <strong>Сумма баллов для текущей выборки: {{ total_points }}</strong>
+</div>
+{% endif %}
+
+{{ block.super }}
+
+{% if total_points %}
+<div class="results-summary" style="margin-top: 15px; padding: 10px;">
+    <strong>Сумма баллов для текущей выборки: {{ total_points }}</strong>
+</div>
+{% endif %}
+{% endblock %}
