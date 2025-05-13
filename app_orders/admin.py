@@ -5,7 +5,11 @@ from django.contrib import admin
 from django.db.models import Sum, Value
 from django.db.models.functions import Coalesce
 
-from app_orders.FiltersAdmin import HasSentimentFilter, HasVideoProofsFilter,  HistoryUserTypeFilter
+from app_orders.FiltersAdmin import (
+    HasSentimentFilter,
+    HasVideoProofsFilter,
+    HistoryUserTypeFilter,
+)
 from app_orders.models import (
     Order,
     OrderEntry,
@@ -112,6 +116,7 @@ class OrderAdmin(admin.ModelAdmin):
         "history__processed_by__username__istartswith",
         "history__processed_by__username__icontains",
         "history__processed_by__username__iendswith",
+        "history__processed_by__phone_number__iexact",
     )
     list_filter = (
         "order_status",
@@ -172,7 +177,7 @@ class OrderAdmin(admin.ModelAdmin):
             points_sum=Coalesce(
                 Sum("scores__points"),  # суммируем связанные CourierScore
                 Value(Decimal("0.00")),  # если нет баллов → 0
-            )
+            ),
         )
 
     # ②  Выводим значение в колонке
@@ -181,6 +186,26 @@ class OrderAdmin(admin.ModelAdmin):
 
     points_total.short_description = "Баллы"
     points_total.admin_order_field = "points_sum"
+
+    def changelist_view(self, request, extra_context=None):
+        """
+        Перегружаем changelist_view для добавления суммы баллов для текущей выборки.
+        """
+        response = super().changelist_view(request, extra_context=extra_context)
+
+        try:
+            queryset = response.context_data["cl"].queryset
+            total_points = queryset.aggregate(
+                total_points=Coalesce(Sum("points_sum"), Value(Decimal("0.00")))
+            )["total_points"]
+
+            # Добавляем в контекст итоговую сумму
+            response.context_data["total_points"] = total_points
+
+        except (AttributeError, KeyError):
+            pass
+
+        return response
 
 
 @admin.register(OrderEntry)
