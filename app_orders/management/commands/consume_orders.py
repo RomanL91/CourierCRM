@@ -315,8 +315,8 @@ class Command(BaseCommand):
             oh.save()
 
             # === Начисляем баллы, если нужно (action='COMPLETED', MERCHANT_USER, есть processed_by)
-            if (
-                action == "COMPLETED"
+            if (oh_created
+                and action == "COMPLETED"
                 and user_type == "MERCHANT_USER"
                 and oh.processed_by
             ):

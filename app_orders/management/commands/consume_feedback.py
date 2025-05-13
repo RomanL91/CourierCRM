@@ -13,8 +13,8 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 # Настройки RabbitMQ
-# RABBIT_HOST = "185.100.67.246"
-RABBIT_HOST = "0.0.0.0"
+RABBIT_HOST = "185.100.67.246"
+# RABBIT_HOST = "0.0.0.0"
 RABBIT_PORT = 5672
 RABBIT_USER = "guest"
 RABBIT_PASSWORD = "guest"

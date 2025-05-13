@@ -169,8 +169,11 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://sck.kz",
+    "http://185.100.67.246:8889",
 ]
 CORS_ALLOWED_ORIGINS = [
     "https://sck.kz",
 ]
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = "Lax"

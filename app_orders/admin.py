@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.db.models import Sum, Value
 from django.db.models.functions import Coalesce
 
-from app_orders.FiltersAdmin import HasSentimentFilter, HasVideoProofsFilter
+from app_orders.FiltersAdmin import HasSentimentFilter, HasVideoProofsFilter,  HistoryUserTypeFilter
 from app_orders.models import (
     Order,
     OrderEntry,
@@ -117,7 +117,7 @@ class OrderAdmin(admin.ModelAdmin):
         "order_status",
         "created_at",
         "consumer_sentiment__sentiment",
-        "history__user_type",
+        HistoryUserTypeFilter,
         HasSentimentFilter,
         HasVideoProofsFilter,
     )

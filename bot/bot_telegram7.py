@@ -37,18 +37,18 @@ from app_accounts.models import User, TelegramGroup
 # ============================================================
 # Конфигурация и инициализация
 # ============================================================
-# API_TOKEN = "8118146507:AAEPYUDWh9S-aX6XQtVHvnIVaQ8Rc2FSnUs"
-API_TOKEN = "7832235523:AAEMMP-wr4Z_90ivWitB_6Zbi5nbzc2Afrk"  # https://t.me/sckdev_bot
-# RABBIT_HOST = "185.100.67.246"
-RABBIT_HOST = "0.0.0.0"
+API_TOKEN = "8118146507:AAEPYUDWh9S-aX6XQtVHvnIVaQ8Rc2FSnUs"
+# API_TOKEN = "7832235523:AAEMMP-wr4Z_90ivWitB_6Zbi5nbzc2Afrk"  # https://t.me/sckdev_bot
+RABBIT_HOST = "185.100.67.246"
+# RABBIT_HOST = "0.0.0.0"
 RABBIT_PORT = 5672
 RABBIT_USER = "guest"
 RABBIT_PASSWORD = "guest"
 RABBIT_QUEUE = "telegram_queue"
 RABBIT_QUEUE_FEEDBACK = "feedback_queue"
-# DJANGO_HOST = "185.100.67.246"
-DJANGO_HOST = "0.0.0.0"
-ENDPOINT_API_VIDEO = "http://127.0.0.1:8000/v1/api/upload_video/"
+DJANGO_HOST = "185.100.67.246"
+# DJANGO_HOST = "0.0.0.0"
+ENDPOINT_API_VIDEO = "http://185.100.67.246:8889/v1/api/upload_video/"
 
 logging.basicConfig(level=logging.INFO)
 
