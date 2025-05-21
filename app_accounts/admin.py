@@ -46,7 +46,14 @@ class CustomUserAdmin(UserAdmin):
     )
 
     # какие поля показывать в списке пользователей
-    list_display = ["username", "email", "phone_number", "is_staff", "is_superuser"]
+    list_display = [
+        "username",
+        "email",
+        "phone_number",
+        "chat_id",
+        "is_staff",
+        "is_superuser",
+    ]
 
     # по каким полям делать поиск
     search_fields = ["username", "email", "phone_number"]
