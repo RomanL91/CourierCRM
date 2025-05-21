@@ -4,11 +4,19 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from app_orders.models import Order
+from app_cargo.models import City
 
 
 class User(AbstractUser):
     phone_number = models.CharField(max_length=50, blank=True, null=True)
     chat_id = models.BigIntegerField(blank=True, null=True)  # Telegram chat_id
+    city = models.ForeignKey(
+        City,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+        related_name="employees",
+    )  # город сотрудника
 
     def __str__(self):
         # Можно выводить либо username, либо (username + телефон)

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #
     "app_orders.apps.AppOrdersConfig",
     "app_accounts",
+    "app_cargo",
 ]
 
 MIDDLEWARE = [
