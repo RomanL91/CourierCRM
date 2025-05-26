@@ -6,6 +6,7 @@ python manage.py collectstatic --no-input
 python manage.py consume_orders --host=185.100.67.246 &
 python manage.py consume_feedback &
 python manage.py consume_qr_events &
+python manage.py cargo_qr &
 python /app/bot/bot_telegram7.py &
 
 
