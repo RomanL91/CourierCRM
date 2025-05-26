@@ -26,7 +26,9 @@ class CustomUserAdmin(UserAdmin):
                     "first_name",
                     "last_name",
                     "email",
-                    "phone_number",  # <-- ваше кастомное поле
+                    "phone_number",  # <-- кастомное поле
+                    "chat_id",  # <-- кастомное поле
+                    "city",  # <-- кастомное поле
                 )
             },
         ),
